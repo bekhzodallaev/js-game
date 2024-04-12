@@ -19,7 +19,7 @@ const playRound = () => {
 
   while (true) {
     playerSelection = prompt(
-      "Enter rock, paper, or scissors 😊😊"
+      "Time to make your move! Enter 'rock', 'paper', or 'scissors' and let's see who reigns supreme! 😊👊✋✌️"
     ).toLowerCase();
     console.log("Player's selection:", playerSelection);
     if (
@@ -29,7 +29,9 @@ const playRound = () => {
     ) {
       break;
     }
-    alert("Invalid input ❌! Please enter rock, paper, or scissors.✌️✌️");
+    alert(
+      "Whoops! Looks like something went askew! Please enter 'rock,' 'paper,' or 'scissors' only. No funny business, okay? Let's keep it fair and square! 😄"
+    );
   }
 
   const computerSelection = computerPlay();
