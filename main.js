@@ -19,7 +19,7 @@ const playRound = () => {
 
   while (true) {
     playerSelection = prompt(
-      "Time to make your move! Enter 'rock', 'paper', or 'scissors' and let's see who reigns supreme! 😊👊✋✌️"
+      "Time to make your move!There are 5 rounds in the game. Enter 'rock', 'paper', or 'scissors' and let's see who reigns supreme! 😊👊✋✌️"
     ).toLowerCase();
     console.log("Player's selection:", playerSelection);
     if (
