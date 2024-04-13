@@ -16,10 +16,9 @@ const playRound = () => {
   let resultMessage;
   let playerScore = 0;
   let computerScore = 0;
-
   while (true) {
     playerSelection = prompt(
-      "Time to make your move!There are 5 rounds in the game. Enter 'rock', 'paper', or 'scissors' and let's see who reigns supreme! 😊👊✋✌️"
+      "Time to make your move! Enter 'rock', 'paper', or 'scissors' and let's see who reigns supreme! 😊👊✋✌️"
     )
       .toLowerCase()
       .trim();
@@ -75,6 +74,13 @@ const playRound = () => {
 };
 
 const game = () => {
+  const confirmed = confirm(
+    "Hello welcome to the (ROCK $ PAPER $ SCISSORS)game. There are 5 rounds in the game. Are you ready to play the game?"
+  );
+  if (!confirmed) {
+    alert("Okay, maybe next time!");
+    return;
+  }
   let playerScore = 0;
   let computerScore = 0;
 
