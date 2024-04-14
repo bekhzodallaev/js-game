@@ -93,7 +93,7 @@ const game = () => {
     console.log(resultMessage);
     playerScore += roundPlayerScore;
     computerScore += roundComputerScore;
-    alert(`You finised round ${i + 1} ${resultMessage}`);
+    alert(`You finised round ${i + 1}. ${resultMessage}`);
   }
 
   console.log("Final scores:");
