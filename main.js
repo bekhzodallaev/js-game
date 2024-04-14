@@ -11,63 +11,45 @@ const computerPlay = () => {
   }
 };
 
-const playRound = () => {
-  let playerSelection;
-  let resultMessage;
-  let playerScore = 0;
-  let computerScore = 0;
+const winner = ( user, comp ) => {  
+  if (user === comp) return "It's a tie!";  
+  else if ((user === 'rock' && comp === 'scissors') || 
+          (user === 'scissors' && comp === 'paper') ||  
+          (user === 'paper' && comp === 'rock')) return `You win! ${user} beats ${comp}`;   
+  else return `You lose! ${comp} beats ${user}`;    
+};
+
+const getPlayerSelection = () => {
   while (true) {
-    playerSelection = prompt(
-      "Time to make your move! Enter 'rock', 'paper', or 'scissors' and let's see who reigns supreme! 😊👊✋✌️"
-    )
-      .toLowerCase()
-      .trim();
-    console.log("Player's selection:", playerSelection);
-    if (
-      playerSelection === "rock" ||
-      playerSelection === "paper" ||
-      playerSelection === "scissors"
-    ) {
-      break;
-    }
-    alert(
-      "Whoops! Looks like something went askew! Please enter 'rock,' 'paper,' or 'scissors' only. No funny business, okay? Let's keep it fair and square! 😄"
-    );
+      const selection = prompt(
+          "Time to make your move! Enter 'rock', 'paper', or 'scissors' and let's see who reigns supreme! 😊👊✋✌️"
+      )
+          .toLowerCase()
+          .trim();
+      if (["rock", "paper", "scissors"].includes(selection)) {
+          return selection;
+      }
+      alert(
+          "Whoops! Looks like something went askew! Please enter 'rock,' 'paper,' or 'scissors' only. No funny business, okay? Let's keep it fair and square! 😄"
+      );
   }
+};
 
+const playRound = () => {
+  let playerScore   = 0;
+  let computerScore = 0;
+
+  const playerSelection   = getPlayerSelection();
   const computerSelection = computerPlay();
-  console.log("Computer's selection:", computerSelection);
+  let   resultMessage     = winner(playerSelection, computerSelection);
 
-  if (playerSelection === "rock") {
-    if (computerSelection === "paper") {
-      resultMessage = "You lose! Paper beats Rock 😢";
-      computerScore++;
-    } else if (computerSelection === "scissors") {
-      resultMessage = "You win! Rock beats Scissors 😍";
-      playerScore++;
-    } else {
-      resultMessage = "It's a tie! 🤝";
-    }
-  } else if (playerSelection === "paper") {
-    if (computerSelection === "rock") {
-      resultMessage = "You win! Paper beats Rock 😍";
-      playerScore++;
-    } else if (computerSelection === "scissors") {
-      resultMessage = "You lose! Scissors beats Paper 😢";
-      computerScore++;
-    } else {
-      resultMessage = "It's a tie! 🤝";
-    }
-  } else if (playerSelection === "scissors") {
-    if (computerSelection === "rock") {
-      resultMessage = "You lose! Rock beats Scissors 😢";
-      computerScore++;
-    } else if (computerSelection === "paper") {
-      resultMessage = "You win! Scissors beats Paper 😍";
-      playerScore++;
-    } else {
-      resultMessage = "It's a tie! 🤝";
-    }
+  console.log("Computer's selection:", computerSelection);
+  
+  resultMessage = winner( playerSelection, computerSelection)
+  if(resultMessage.includes("win")){
+      playerScore++
+  } else if (resultMessage.includes("lose")){
+      computerScore++
   }
 
   return { resultMessage, playerScore, computerScore };
